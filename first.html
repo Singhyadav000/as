@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAY! It's BOGO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<STYLE>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #ff6f61;
+    }
+
+    .box {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .box input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    .box .price {
+        font-size: 1.2em;
+        color: #333;
+        margin-left: 300px;
+        margin-top: -15px;
+    }
+
+    .original-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .box.most-popular {
+        border: 2px solid #ff6f61;
+        background-color: rgba(255, 111, 97, 0.1);
+    }
+
+    .box:hover {
+        background-color: rgba(255, 111, 97, 0.1);
+        border: 2px solid #ff6f61;
+    }
+
+    .options {
+        margin-top: 10px;
+    }
+
+    .button {
+        background-color: #ff4c41;
+    }
+
+    .free-delivery {
+        font-weight: bold;
+        color: #ff6f61;
+        text-align: center;
+        margin-left: -450px;
+    }
+
+    .total {
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.2em;
+        margin-right: -400px;
+        margin-top: -20px;
+
+    }
+
+    .add-to-cart {
+        display: block;
+        width: 600px;
+        padding: 8px;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        margin: 22px auto;
+    }
+
+    .add-to-cart:hover {
+        background-color: #ff4c41;
+    }
+
+    footer {
+        text-align: center;
+        color: #999;
+        margin-right: -440px;
+        margin-bottom: 200px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>YAY! It's BOGO</h1>
+        <div class="box" id="unit1">
+            <input type="radio" name="unit" id="oneUnit">
+            <label for="oneUnit">1 Unit - <button class="button">10% Off</button></label>
+            <div class="price">$10.00 USD <br><span class="original-price">$24.00 USD</span></div>
+        </div>
+
+        <div class="box most-popular" id="unit2">
+            <input type="radio" name="unit" id="twoUnit" checked>
+            <label for="twoUnit">2 Unit - <button class="button">20% Off</button></label>
+            <div class="price">$18.00 USD <br><span class="original-price">$24.00 USD</span></div>
+            <div class="options">
+
+                <label>Size: </label>
+                <br>
+                <label>1:
+                    <select>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                </label>
+                <br>
+                <label>2:
+                    <select>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                    </select>
+                </label>
+                <label>Colour</label>
+                <br>
+                <label>
+                    <select>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </label>
+                <label>
+                    <select>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="box" id="unit3">
+            <input type="radio" name="unit" id="threeUnit">
+            <label for="threeUnit">3 Unit - <button class="button">30% Off</button></label>
+            <div class="price">$24.00 USD <br><span class="original-price">$24.00 USD</span></div>
+        </div>
+
+        <div class="free-delivery">Free Delivery</div>
+        <div class="total">Total: <span id="totalAmount">$18.00 USD</span></div>
+    </div>
+    <button class="add-to-cart">+ Add to Cart</button>
+
+    <footer>
+        <p class="footer">@ Powered by Pumper</p>
+    </footer>
+
+
+    <script src="script.js">
+        document.querySelectorAll('input[name="unit"]').forEach((radio) => {
+            radio.addEventListener('change', function () {
+                const selectedUnit = this.id;
+
+                if (selectedUnit === 'oneUnit') {
+                    document.getElementById('totalAmount').innerText = "$10.00 USD";
+                } else if (selectedUnit === 'twoUnit') {
+                    document.getElementById('totalAmount').innerText = "$18.00 USD";
+                } else if (selectedUnit === 'threeUnit') {
+                    document.getElementById('totalAmount').innerText = "$24.00 USD";
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
